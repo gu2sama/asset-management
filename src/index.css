@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:  "DM Sans", "Noto Sans JP", system-ui, sans-serif;
+  --font-serif: "DM Serif Display", "Noto Serif JP", Georgia, serif;
+  --font-mono:  "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --color-bg:        #09090f;
+  --color-surface:   #111118;
+  --color-surface-2: #18181f;
+  --color-border:    #2a2a35;
+  --color-text:      #f0eff8;
+  --color-muted:     #7a798e;
+  --color-gold:      #c9a84c;
+  --color-gold-2:    #f0cc7a;
+  --color-gain:      #4ade80;
+  --color-loss:      #f87171;
+  --color-info:      #60a5fa;
+  --color-warn:      #fbbf24;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: #09090f;
+  color: #f0eff8;
+  font-family: "DM Sans", "Noto Sans JP", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+#root { min-height: 100svh; }
+
+h1, h2, h3 {
+  font-family: "DM Serif Display", "Noto Serif JP", serif;
+  letter-spacing: -0.01em;
+}
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.scrollbar-thin::-webkit-scrollbar { width: 4px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #2a2a35; border-radius: 2px; }
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+@keyframes pulse-gold {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+.animate-fadein { animation: fadein 0.22s ease both; }
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #18181f 25%, #2a2a35 50%, #18181f 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.animate-pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+
+:focus-visible {
+  outline: 2px solid #c9a84c;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; }
+
+.recharts-tooltip-wrapper { z-index: 50; }
+.recharts-cartesian-axis-tick-value {
+  fill: #7a798e;
+  font-size: 11px;
+  font-family: "DM Sans", sans-serif;
+}
+.recharts-legend-item-text { color: #7a798e !important; font-size: 12px; }
+
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+.pt-safe { padding-top:    env(safe-area-inset-top); }
+
+.glow-gold {
+  box-shadow: 0 0 80px rgba(201,168,76,0.07), 0 0 20px rgba(201,168,76,0.04);
+}
+
+.progress-bar { transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
