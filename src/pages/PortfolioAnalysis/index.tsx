@@ -74,7 +74,7 @@ function PortfolioChart({ snapshots }: { snapshots: { snapshotId: string; totalV
         <Tooltip
           contentStyle={{ background: '#1a1520', border: '1px solid #2a2535', borderRadius: 8, fontSize: 12 }}
           labelStyle={{ color: '#aaa' }}
-          formatter={(v: number) => [`¥${v.toLocaleString()}`, '総資産']}
+          formatter={(v: unknown) => [`¥${Number(v ?? 0).toLocaleString()}`, '総資産'] as [string, string]}
         />
         <Area
           type="monotone"
